@@ -14,6 +14,11 @@ data "aws_ami" "app_ami" {
   owners = ["979382823631"] # Bitnami
 }
 
+provider "aws" {
+  profile = "default"
+  region  = "us-east-1"
+}
+
 resource "aws_instance" "web" {
   ami           = data.aws_ami.app_ami.id
   instance_type = "t3.nano"
